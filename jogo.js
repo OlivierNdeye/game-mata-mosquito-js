@@ -25,15 +25,45 @@ function posicaoRandomica() {
     //criar o elemento html
     var mosquito = document.createElement('img');
     mosquito.src = 'img/mosquito.png';
-    mosquito.className = 'mosquito1';
+    mosquito.className = tamanhoAleatorio() + ' ' + ladoAleatorio()
     mosquito.style.left = posicaoX + 'px';
     mosquito.style.top = posicaoY + 'px';
     mosquito.style.position = 'absolute';
 
-    document.body.appendChild(mosquito);    
+    document.body.appendChild(mosquito);
+    //console.log(tamanhoAleatorio());
+    console.log(ladoAleatorio());   
+
 }
 
-function
+function tamanhoAleatorio() {
+    //variavel que vai receber o tamanho aleatorio
+    var classe = Math.floor(Math.random() * 3);
 
+    switch(classe) {
+        case 0:
+            return 'mosquito1';
+
+        case 1:
+            return 'mosquito2';
+
+        case 2:
+            return 'mosquito3';
+    }
+}
+
+function ladoAleatorio() {
+    //variavel que vai fazer o mosquito olhar para direita e para esquerda
+
+    var classe = Math.floor(Math.random() * 2);
+
+    switch(classe){
+        case 0:
+            return 'ladoA';
+
+        case 1:
+            return 'ladoB';
+    }
+}
 
 
