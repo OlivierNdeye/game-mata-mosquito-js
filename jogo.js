@@ -1,19 +1,42 @@
 var altura = 0;
 var largura = 0;
+var vidas = 1;
+var tempo = 10;
 
 //função responsável por capturar  a altura e largura da tela
 function ajustaTamPalcoJogo() {
     altura = window.innerHeight;
     largura = window.innerWidth;
-    console.log(altura, largura);
+    //console.log(altura, largura);
 }
 
 ajustaTamPalcoJogo()
 
+var cronometro = setInterval(function(){
+    tempo -= 1;
+
+    if(tempo < 0) {
+        clearInterval(cronometro);
+        clearInterval(maisMosquitos)
+        window.location.href = 'vitoria.html'
+    } else {
+        document.getElementById('cronometro').innerHTML = tempo;
+    }
+}, 1000)
+
 function posicaoRandomica() {
     //remover o mosquito anterior(caso exista...)
     if(document.getElementById('mosquito')) {
-        document.getElementById('mosquito').remove() 
+        document.getElementById('mosquito').remove();
+
+        //console.log('v' + vidas)
+        if(vidas > 3) {
+            window.location.href = 'fim_de_jogo.html';
+        } else {
+            document.getElementById('v' + vidas).src="img/coracao_vazio.png";
+    
+            vidas++
+        }
     }
     
     
@@ -26,7 +49,7 @@ function posicaoRandomica() {
     posicaoY = posicaoY < 0 ? 0 : posicaoY;
     
     
-    console.log(posicaoX, posicaoY);
+    //console.log(posicaoX, posicaoY);
     
 
     //criar o elemento html
@@ -38,8 +61,9 @@ function posicaoRandomica() {
         mosquito.style.top = posicaoY + 'px';
         mosquito.style.position = 'absolute';
         mosquito.id = 'mosquito';
-        mosquito.onclick = function () {
-            alert('O elemento foi clicado a tempo');
+        mosquito.onclick = function() {
+            this.remove()
+            console.log('Removeu');
         }
 
         function somMosquito() {
@@ -47,11 +71,11 @@ function posicaoRandomica() {
             somMosquito.play();
         }
 
-        somMosquito()
+        somMosquito();
         
         document.body.appendChild(mosquito);
         //console.log(tamanhoAleatorio());
-        console.log(ladoAleatorio());   
+        //console.log(ladoAleatorio());   
     }
     
     criarMosquito()
@@ -88,8 +112,10 @@ function ladoAleatorio() {
     }
 }
 
-setInterval(function() {
-    posicaoRandomica();
-}, 1000)
+//criar mais mosquitos a cada 2 minutos
+var maisMosquitos = setInterval(function() { 
+        posicaoRandomica();
+    }, 2000);
+
 
 
