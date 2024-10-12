@@ -42,12 +42,12 @@ function posicaoRandomica() {
             alert('O elemento foi clicado a tempo');
         }
 
-        function playAudio() {
+        function somMosquito() {
             var somMosquito = document.getElementById('somMosquito');
             somMosquito.play();
         }
 
-        playAudio()
+        somMosquito()
         
         document.body.appendChild(mosquito);
         //console.log(tamanhoAleatorio());
