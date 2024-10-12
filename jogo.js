@@ -2,6 +2,24 @@ var altura = 0;
 var largura = 0;
 var vidas = 1;
 var tempo = 10;
+var criarVelocidadeMosquito = 1500
+
+
+//criar os niveis de dificuldade do jogo
+var nivel = window.location.search;
+nivel - nivel.replace('?', '')
+
+if(nivel === 'normal') {
+    //1500
+    criarVelocidadeMosquito = 1500
+} else if (nivel === 'dificil') {
+    //1000
+    criarVelocidadeMosquito = 1000
+} else if(nivel === 'kratos') {
+    //750
+    criarVelocidadeMosquito = 750
+}
+
 
 //função responsável por capturar  a altura e largura da tela
 function ajustaTamPalcoJogo() {
@@ -63,12 +81,21 @@ function posicaoRandomica() {
         mosquito.id = 'mosquito';
         mosquito.onclick = function() {
             this.remove()
-            console.log('Removeu');
+            somTapa()
         }
 
         function somMosquito() {
             var somMosquito = document.getElementById('somMosquito');
             somMosquito.play();
+        }
+
+        function somTapa() {
+            var tapa = document.getElementById('somTapa');
+            tapa.play()
+        }
+
+        if(mosquito.onclick) {
+            console.log('clicou')
         }
 
         somMosquito();
@@ -115,7 +142,7 @@ function ladoAleatorio() {
 //criar mais mosquitos a cada 2 minutos
 var maisMosquitos = setInterval(function() { 
         posicaoRandomica();
-    }, 2000);
+    }, criarVelocidadeMosquito);
 
 
 
