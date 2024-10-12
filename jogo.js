@@ -11,28 +11,50 @@ function ajustaTamPalcoJogo() {
 ajustaTamPalcoJogo()
 
 function posicaoRandomica() {
+    //remover o mosquito anterior(caso exista...)
+    if(document.getElementById('mosquito')) {
+        document.getElementById('mosquito').remove() 
+    }
+    
+    
     //gerar a posição do objeto randomicamente, baseado na altura e largura da pagina
     var posicaoX = Math.floor(Math.random() * largura) - 90;
     var posicaoY = Math.floor(Math.random() * altura) - 90;
     
     //calculo para  evitar que o objeto saia da tela
     posicaoX = posicaoX  < 0 ? 0 : posicaoX;
-    posicaoY = posicaoY < 0 ? 0 : posicaoY
-
+    posicaoY = posicaoY < 0 ? 0 : posicaoY;
+    
     
     console.log(posicaoX, posicaoY);
     
-    //criar o elemento html
-    var mosquito = document.createElement('img');
-    mosquito.src = 'img/mosquito.png';
-    mosquito.className = tamanhoAleatorio() + ' ' + ladoAleatorio()
-    mosquito.style.left = posicaoX + 'px';
-    mosquito.style.top = posicaoY + 'px';
-    mosquito.style.position = 'absolute';
 
-    document.body.appendChild(mosquito);
-    //console.log(tamanhoAleatorio());
-    console.log(ladoAleatorio());   
+    //criar o elemento html
+    function criarMosquito() {
+        var mosquito = document.createElement('img');
+        mosquito.src = 'img/mosquito.png';
+        mosquito.className = tamanhoAleatorio() + ' ' + ladoAleatorio()
+        mosquito.style.left = posicaoX + 'px';
+        mosquito.style.top = posicaoY + 'px';
+        mosquito.style.position = 'absolute';
+        mosquito.id = 'mosquito';
+        mosquito.onclick = function () {
+            alert('O elemento foi clicado a tempo');
+        }
+
+        function playAudio() {
+            var somMosquito = document.getElementById('somMosquito');
+            somMosquito.play();
+        }
+
+        playAudio()
+        
+        document.body.appendChild(mosquito);
+        //console.log(tamanhoAleatorio());
+        console.log(ladoAleatorio());   
+    }
+    
+    criarMosquito()
 
 }
 
@@ -65,5 +87,9 @@ function ladoAleatorio() {
             return 'ladoB';
     }
 }
+
+setInterval(function() {
+    posicaoRandomica();
+}, 1000)
 
 
