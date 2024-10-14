@@ -10,7 +10,7 @@ var nivel = window.location.search;
 nivel - nivel.replace('?', '')
 
 if(nivel === 'normal') {
-    //1000
+    //1500
     criarVelocidadeMosquito = 1500
 } else if (nivel === 'dificil') {
     //700
