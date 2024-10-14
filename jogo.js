@@ -1,7 +1,7 @@
 var altura = 0;
 var largura = 0;
 var vidas = 1;
-var tempo = 60;
+var tempo = 20;
 var criarVelocidadeMosquito = 1500
 
 
@@ -11,13 +11,16 @@ nivel - nivel.replace('?', '')
 
 if(nivel === 'normal') {
     //1500
-    criarVelocidadeMosquito = 1500
+    criarVelocidadeMosquito = 1500;
+    tempo = 20;
 } else if (nivel === 'dificil') {
     //700
-    criarVelocidadeMosquito = 1000
+    criarVelocidadeMosquito = 1000;
+    tempo = 40
 } else if(nivel === 'kratos') {
     //400
-    criarVelocidadeMosquito = 750
+    criarVelocidadeMosquito = 750;
+    tempo = 60
 }
 
 
