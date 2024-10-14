@@ -14,8 +14,8 @@ if(nivel === 'normal') {
     criarVelocidadeMosquito = 1500;
 } else if (nivel === 'dificil') {
     tempo = 40;
-    criarVelocidadeMosquito = 7500;
-} else if(nivel === 'kratos') {
+    criarVelocidadeMosquito = 1000;
+} else if(nivel === 'Kratos') {
     tempo = 60;
     criarVelocidadeMosquito = 550;
 }
