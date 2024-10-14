@@ -1,6 +1,15 @@
 body {
     background-image: url(img/bg.jpg);
     background-repeat: no-repeat;
+}
+
+html {
+    cursor: url(img/mata_mosca.png) 30 30, auto;
+}
+
+body {
+    background-image: url(img/bg.jpg);
+    background-repeat: no-repeat;
     background-size: 100%;
 }
 
@@ -43,9 +52,7 @@ body {
 }
 
 .cronometro {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     float: left;
     font-size: 20px;
 }
-
-/*MEDIA QUERIES*/
-
