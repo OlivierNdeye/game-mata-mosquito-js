@@ -43,10 +43,3 @@
 
 /*MEDIA QUERIES*/
 
-@media(min-width: 785px) {
-    body {
-        max-width: 320px;
-        height: 100%;
-        width: 100%;
-    }
-}
